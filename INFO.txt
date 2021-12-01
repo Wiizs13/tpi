@@ -1,0 +1,2 @@
+El programa esta hecho para estar en el localhost 
+dentro de la carpeta "/AD18005" debido al htaccess

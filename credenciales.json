@@ -1,0 +1,26 @@
+[
+  {
+    "firstName": "Wilberth",
+    "lastName": "Arana",
+    "age": 22,
+    "username": "will",
+    "password": "1234",
+    "type": "User"
+  },
+  {
+    "firstName": "Diego",
+    "lastName": "Herrera",
+    "age": 30,
+    "username": "diego",
+    "password": "1234",
+    "type": "Admin"
+  },
+  {
+    "firstName": "Armando",
+    "lastName": "Maradona",
+    "age": 62,
+    "username": "maradona",
+    "password": "1234",
+    "type": "Admin"
+  }
+]

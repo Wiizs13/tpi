@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Subscriptions",
+    "url": "http://localhost/AD18005/Subscriptions"
+  },
+  {
+    "title": "History",
+    "url": "http://localhost/AD18005/History"
+  },
+  {
+    "title": "Upload",
+    "url": "http://localhost/AD18005/Upload"
+  }
+]
