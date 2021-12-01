@@ -6,6 +6,8 @@ ini_set( "display_errors", "1" );
 define("BASE_DIR", $_SERVER['DOCUMENT_ROOT'] . "/AD18005");
 define("CONTROLLERS_DIR", $_SERVER['DOCUMENT_ROOT'] . "/AD18005/controllers/");
 
+//definir url para etiquetas a
+define("DEFAULT_LINK", "http://localhost/AD18005");
 // controlador por defecto
 
 define("DEFAULT_CONTROLLER", "Page");
@@ -21,7 +23,9 @@ $uri = explode('/', $_SERVER['REQUEST_URI']);
 $controller = DEFAULT_CONTROLLER;
 
 $_GET['controller'] = $uri[2];
-$_GET['action'] = $uri[3];
+if(isset($uri[3])){
+    $_GET['action'] = $uri[3];
+}
 
 if (!empty($_GET['controller'])) {
     $controller = $_GET['controller'];

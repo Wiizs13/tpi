@@ -2,4 +2,4 @@ RewriteEngine On
 RewriteBase /AD18005
 options +FollowSymLinks
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.*) index.php?controller=$2&&action=$3 [L]
+RewriteRule (.*) index.php?controller=$2 [L]
