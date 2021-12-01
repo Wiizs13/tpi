@@ -1,54 +1,56 @@
 <?php
-include "src/config.php";
-include "src/Structure.php";
 
-error_reporting(E_ALL);
-ini_set("display_errors", "1");
+error_reporting( E_ALL );
+ini_set( "display_errors", "1" );
 
+define("BASE_DIR", $_SERVER['DOCUMENT_ROOT'] . "/AD18005");
+define("CONTROLLERS_DIR", $_SERVER['DOCUMENT_ROOT'] . "/AD18005/controllers/");
+
+// controlador por defecto
+
+define("DEFAULT_CONTROLLER", "Page");
+define("DEFAULT_ACTION", "showHome");
 ?>
 
-<?= Structure::printHeader() ?>
-<?= Structure::printNav() ?>
 
 <?php
-/****************** CONTROLADOR FRONTAL ********************/
 
-// Definimos un controlador por defecto
-
+$_SESSION['method'] = $_SERVER['REQUEST_METHOD'];
+$uri = explode('/', $_SERVER['REQUEST_URI']);
+//print_r($uri);
 $controller = DEFAULT_CONTROLLER;
-// Tomamos el controlador requerido por el usuario
-// En caso que no se especifique uno, utilizamos el controlador por defecto
+
+$_GET['controller'] = $uri[2];
+$_GET['action'] = $uri[3];
+
 if (!empty($_GET['controller'])) {
     $controller = $_GET['controller'];
 }
+$action_s = DEFAULT_ACTION;
 
-// definimos una acción por defecto
-$action = DEFAULT_ACTION;
-
-if (!empty($_GET['action'])) {
-    $action = $_GET['action'];
+if (!empty($_GET['action'])){
+    $action_s = $_GET['action'];
 }
 
-// ya tenemos el controlador y el action
-// formamos el nombre del fichero que contiene nuestro controlador
-
 $fullController = CONTROLLERS_DIR . $controller . "Controller.php";
+
 $controller = $controller . "Controller";
 
-// si la variable $controller es un fichero lo vamos a requerir
+
 if (is_file($fullController)) {
-    require_once($fullController);
+    require_once ($fullController);
     $printController = new $controller();
-} else {
+}
+else
+{
     die("<h1>Controlador no localizado - 404 Not Found</h1>");
 }
 
-// si la variable $action es una función la ejecutamos o detenemos el script
-if (method_exists($printController, $action)) {
-    $printController->$action();
-} else {
-    die("<h1>Método no definido - 404 Not Found</h1>");
+require_once "views/headerView.php";
+if (method_exists($printController,$action_s)){
+    $printController->$action_s();
+} else{
+    die("<h1>Metodo no existente.</h1>");
 }
+require_once "views/footerView.php";
 ?>
-
-<?= Structure::printFooter() ?>

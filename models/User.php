@@ -1,26 +1,12 @@
-<?php
+<php
 
-require_once("src/Idatabase.php");
-
-class User extends Conection
+class User
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-
-    public function getUsersFromDatabase()
-    {
-        $result = [];
-        $sql = "SELECT * FROM users";
-        $stmt = $this->conn->prepare($sql);
-        
-        if ($stmt->execute()) {
-            while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                array_push($result, $fila);
-              }
-        }
-        return $result;
-    }
+    select
+    selectOne
+    update
+    store
+    delete
 }
+
+//crea conexion a base de datos y hacer el login
